@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_excel("brasil/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx", sheet_name="21.01.26", header=None)
+df = pd.read_excel("brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx", sheet_name="21.01.26", header=None)
 
 Venta_GPL = float(str(df.iloc[7, 15]).replace(',', '')) 
 Venta_GNV = float(str(df.iloc[8, 15]).replace(',', ''))
@@ -10,7 +10,7 @@ print(f"Venta_GNV : {Venta_GNV}")
 
 Total_Tarjeta_de_Credito_Liquidos = float(str(df.iloc[16, 15]).replace(',', '').replace('-', '')) 
 Total_Tarjeta_de_Credito_GLP = float(str(df.iloc[17, 15]).replace(',', '').replace('-', '')) 
-Total_Tarjeta_de_Credito_GNV = float(str(df.iloc[18, 15]).replace(',', '').replace('-', '')) 
+Total_Tarjeta_de_Credito_GNV = float(str(df.iloc[18, 15]).replace(',', '').replace('-', ''))
 
 print(f"Total_Tarjeta_de_Credito_Liquidos : {Total_Tarjeta_de_Credito_Liquidos}")
 print(f"Total_Tarjeta_de_Credito_GLP : {Total_Tarjeta_de_Credito_GLP}")
