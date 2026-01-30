@@ -1,6 +1,6 @@
 import openpyxl
 
-wb = openpyxl.load_workbook('brasil/REGISTRO VENTAS -  2026- 01 (1).xlsx')
+wb = openpyxl.load_workbook('MAIN/GRIFOS/brasil/REGISTRO VENTAS -  2026- 01 (1).xlsx')
 
 # 2. Seleccionamos la hoja por su nombre
 nombre_hoja = '32. BRASIL'
