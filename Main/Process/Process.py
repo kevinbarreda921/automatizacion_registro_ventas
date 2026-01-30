@@ -1,6 +1,7 @@
 import openpyxl
 import pandas as pd
-import Data_credit
+from datetime import date
+
 
 def def_Leer_parte_diario(Ruta_excel,dia_a_procesar):
 
@@ -116,7 +117,7 @@ def def_Leer_parte_diario(Ruta_excel,dia_a_procesar):
 
  print("[INFO] Registrando data...")
 
- wb = openpyxl.load_workbook('brasil/REGISTRO VENTAS -  2026- 01 (1).xlsx')
+ wb = openpyxl.load_workbook('../Grifos/BRASIL/REGISTRO VENTAS -  2026- 01 (1).xlsx')
  nombre_hoja = '32. BRASIL'
  sheet = wb[nombre_hoja]
 
@@ -158,5 +159,7 @@ def def_Leer_parte_diario(Ruta_excel,dia_a_procesar):
  print("[INFO] PROCESO FINALIZADO")
 
 
+def obtener_fecha_actual():
+    return date.today()
 
 
