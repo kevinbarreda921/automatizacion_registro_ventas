@@ -6,6 +6,9 @@ df = pd.read_excel(
     header=None,
 )
 
+Total_venta_acumulada = float(str(df.iloc[11, 15]).replace(",", ""))
+print(f"Venta_GNV : {Total_venta_acumulada}")
+
 Venta_GPL = float(str(df.iloc[7, 15]).replace(",", ""))
 Venta_GNV = float(str(df.iloc[8, 15]).replace(",", ""))
 print(f"Venta_GPL : {Venta_GPL}")
