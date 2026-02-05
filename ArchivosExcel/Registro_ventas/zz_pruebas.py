@@ -1,32 +1,69 @@
-# import openpyxl
 
-# wb = openpyxl.load_workbook('MAIN/GRIFOS/brasil/REGISTRO VENTAS -  2026- 01 (1).xlsx')
+import pandas as pd
 
-# # 2. Seleccionamos la hoja por su nombre
-# nombre_hoja = '32. BRASIL'
-# sheet = wb[nombre_hoja]
+# Dias = ["21.01.26","20.01.26","19.01.26","18.01.26","17.01.26","16.01.26","15.01.26","14.01.26","13.01.26","12.01.26","11.01.26","10.01.26","09.01.26","08.01.26","07.01.26","06.01.26","05.01.25","04.01.26","03.01.26","02.01.26","01.01.26"]
 
-# # Ahora puedes trabajar solo en esa hoja
-# print(f"Estás trabajando en: {sheet.title}")
-# sheet['D26'] = 2355.55
-# wb.save('brasil/REGISTRO VENTAS -  2026- 01 (1).xlsx')
+Dias = ["21.01.26"]
+# ,"06.01.26","05.01.26","04.01.26","03.01.26","02.01.26","01.01.26"
+Ruta_excel="Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx"
+Lista_clientes_credito = []
 
+for li in Dias:
+    # print("dia procesado: "+li)
+    df = pd.read_excel(Ruta_excel, sheet_name=li, header=None)
+    
+    Contador_credito = 14
 
-# Lista_credito_brasil = [
-#         {'Fila':'J','CLiente':'ALMACENES ASOCIADOS SOCIEDAD ANONIMA CERRADA '},
-#         {'Fila':'L','CLiente':'C & M SERVICENTROS SOCIEDAD ANONIMA CERRADA '},
-#         {'Fila':'T','CLiente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC '},
-#         {'Fila':'Y','CLiente':'SEGURO INTEGRAL DE SALUD'},
-#         {'Fila':'AL','CLiente':'ALMACENERA MERCANTIL SOCIEDAD COMERCIAL DE RESPONSABILIDAD LIMITADA '}
-#     ]
-# # for Lista in Lista_credito_brasil:
-# #     if(Lista['cliente']=='C & M SERVICENTROS SOCIEDAD ANONIMA CERRADA'):
-# registro = next((u for u in Lista_credito_brasil if u["CLiente"] == "ALMACENES ASOCIADOS SOCIEDAD ANONIMA CERRADA "), None)
+    if str(df.iloc[Contador_credito, 0]) != "nan":
+        while True:
+            Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", ""))
+            Cliente_credito_total = float(
+                str(df.iloc[Contador_credito, 6]).replace(",", "")
+            )
+            if Contador_credito == 14:
+                Lista_clientes_credito.append(
+                    {"fecha":li,"cliente": Cliente_credito, "monto": Cliente_credito_total}
+                )
+            else:
+                if Cliente_credito == " ":
+                    break
+                encontrado = False
+                for Lista in Lista_clientes_credito:
+                    if Lista["cliente"] == Cliente_credito:
+                        Lista["monto"] = round(
+                            Lista["monto"] + Cliente_credito_total, 2
+                        )
+                        encontrado = True
+                        
+                if not encontrado:
+                    Lista_clientes_credito.append(
+                        {"fecha":li,"cliente": Cliente_credito, "monto": Cliente_credito_total}
+                    )
+            Contador_credito += 1
 
-# print(registro)
-# if(registro!=None):
-#     print(registro)
+    Contador_credito += 1
+    Cliente_credito = " "
+    Cliente_credito_total = 0
 
-from datetime import datetime
-
-print(datetime.strptime("21.01.26", "%d.%m.%y").strftime("%Y-%m-%d"))
+    if str(df.iloc[Contador_credito, 0]) != "nan":
+        while True:
+            Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", ""))
+            Cliente_credito_total = float(
+                str(df.iloc[Contador_credito, 6]).replace(",", "")
+            )
+            if Cliente_credito == " ":
+                break
+            encontrado = False
+            for Lista in Lista_clientes_credito:
+                if Lista["cliente"] == Cliente_credito:
+                    Lista["monto"] = round(Lista["monto"] + Cliente_credito_total, 2)
+                    encontrado = True
+                    break
+            if not encontrado:
+                Lista_clientes_credito.append(
+                    {"fecha":li,"cliente": Cliente_credito, "monto": Cliente_credito_total}
+                )
+            Contador_credito += 1
+    
+for Lista in Lista_clientes_credito:
+    print(f"Lista_clientes_credito : {Lista}")

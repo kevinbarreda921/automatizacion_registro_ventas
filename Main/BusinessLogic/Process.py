@@ -187,11 +187,13 @@ def def_Leer_parte_diario(Ruta_excel, dia_a_procesar):
 
     Lista_credito_brasil = [
         {'Fila':'J','CLiente':'ALMACENES ASOCIADOS SOCIEDAD ANONIMA CERRADA'},
-        {'Fila':'L','CLiente':'C & M SERVICENTROS SOCIEDAD ANONIMA CERRADA '},
-        {'Fila':'T','CLiente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC '},
+        {'Fila':'L','CLiente':'C & M SERVICENTROS SOCIEDAD ANONIMA CERRADA'},
+        {'Fila':'T','CLiente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC'},
         {'Fila':'Y','CLiente':'SEGURO INTEGRAL DE SALUD'},
-        {'Fila':'AL','CLiente':'ALMACENERA MERCANTIL SOCIEDAD COMERCIAL DE RESPONSABILIDAD LIMITADA '}
+        {'Fila':'AL','CLiente':'AALMACENERA MERCANTIL SOCIEDAD COMERCIAL DE RESPONSABILIDAD LIMITADA'}
     ]
+    for s in Lista_clientes_credito:
+        print(s)
     for Lista in Lista_clientes_credito:
         registro = next((u for u in Lista_credito_brasil if u["CLiente"] == Lista['cliente']), None)
         if(registro!=None):

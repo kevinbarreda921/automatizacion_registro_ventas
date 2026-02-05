@@ -67,7 +67,8 @@ Contador_credito = 14
 
 if str(df.iloc[Contador_credito, 0]) != "nan":
     while True:
-        Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", ""))
+        Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", "")).strip()
+
         Cliente_credito_total = float(
             str(df.iloc[Contador_credito, 6]).replace(",", "")
         )
@@ -101,7 +102,7 @@ Cliente_credito_total = 0
 
 if str(df.iloc[Contador_credito, 0]) != "nan":
     while True:
-        Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", ""))
+        Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", "")).strip()
         Cliente_credito_total = float(
             str(df.iloc[Contador_credito, 6]).replace(",", "")
         )
