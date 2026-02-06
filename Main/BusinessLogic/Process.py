@@ -59,18 +59,19 @@ def def_Leer_parte_diario(Ruta_excel, dia_a_procesar):
 
     if str(df.iloc[Contador_credito, 0]) != "nan":
         while True:
-            Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", ""))
-            Cliente_credito_total = float(
-                str(df.iloc[Contador_credito, 6]).replace(",", "")
-            )
+            Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", "")).strip()
+            # Cliente_credito = str(Cliente_credito).strip()
+          
             if Contador_credito == 14:
+                Cliente_credito_total = float(str(df.iloc[Contador_credito, 6]).replace(",", ""))
                 Lista_clientes_credito.append(
                     {"cliente": Cliente_credito, "monto": Cliente_credito_total}
                 )
             else:
-                if Cliente_credito == " ":
+                if Cliente_credito == "":
                     break
                 encontrado = False
+                Cliente_credito_total = float(str(df.iloc[Contador_credito, 6]).replace(",", ""))
                 for Lista in Lista_clientes_credito:
                     if Lista["cliente"] == Cliente_credito:
                         Lista["monto"] = round(
@@ -95,13 +96,12 @@ def def_Leer_parte_diario(Ruta_excel, dia_a_procesar):
 
     if str(df.iloc[Contador_credito, 0]) != "nan":
         while True:
-            Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", ""))
-            Cliente_credito_total = float(
-                str(df.iloc[Contador_credito, 6]).replace(",", "")
-            )
-            if Cliente_credito == " ":
+            Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", "")).strip()
+            # Cliente_credito = str(Cliente_credito).strip()
+            if Cliente_credito == "":
                 break
             encontrado = False
+            Cliente_credito_total = float(str(df.iloc[Contador_credito, 6]).replace(",", ""))
             for Lista in Lista_clientes_credito:
                 if Lista["cliente"] == Cliente_credito:
                     Lista["monto"] = round(Lista["monto"] + Cliente_credito_total, 2)
@@ -186,14 +186,20 @@ def def_Leer_parte_diario(Ruta_excel, dia_a_procesar):
     sheet[Campo_Hermes_monto_GNV2] = Hermes_monto_GNV2
 
     Lista_credito_brasil = [
+        {'Fila':'H','CLiente':'COMMUNICATIONS AND SYSTEMS DEVELOPMENT SOCIEDAD ANONIMA CERRADA'},
+        {'Fila':'I','CLiente':'FUERO MILITAR POLICIAL'},
         {'Fila':'J','CLiente':'ALMACENES ASOCIADOS SOCIEDAD ANONIMA CERRADA'},
         {'Fila':'L','CLiente':'C & M SERVICENTROS SOCIEDAD ANONIMA CERRADA'},
+        {'Fila':'N','CLiente':'FONDO NACIONAL DE DESARROLLO PESQUERO'},
         {'Fila':'T','CLiente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC'},
+        {'Fila':'U','CLiente':'UNIDAD EJECUTORA 004 - FONDO DE COOPERACION PARA EL DESARROLLO SOCIAL'},
+        {'Fila':'V','CLiente':'MUNICIPALIDAD DE JESUS MARIA'},
         {'Fila':'Y','CLiente':'SEGURO INTEGRAL DE SALUD'},
-        {'Fila':'AL','CLiente':'AALMACENERA MERCANTIL SOCIEDAD COMERCIAL DE RESPONSABILIDAD LIMITADA'}
+        {'Fila':'AC','CLiente':'INSTITUTO NACIONAL DE SALUD DEL NIñO'},
+        {'Fila':'AL','CLiente':'ALMACENERA MERCANTIL SOCIEDAD COMERCIAL DE RESPONSABILIDAD LIMITADA'}
     ]
-    for s in Lista_clientes_credito:
-        print(s)
+    # for s in Lista_clientes_credito:
+    #     print(s)
     for Lista in Lista_clientes_credito:
         registro = next((u for u in Lista_credito_brasil if u["CLiente"] == Lista['cliente']), None)
         if(registro!=None):

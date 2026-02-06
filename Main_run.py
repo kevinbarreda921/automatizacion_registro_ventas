@@ -1,6 +1,6 @@
 from Main.BusinessLogic import Process
 
-Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx","21.01.26")
+# Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx","21.01.26")
 
 # Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx","20.01.26")
 # Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx","19.01.26")
@@ -14,3 +14,12 @@ Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 
 # Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx","11.01.26")
 # Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx","10.01.26")
 # Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx","09.01.26")
+
+Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx","08.01.26")
+Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx","07.01.26")
+Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx","06.01.26")
+Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx","05.01.25")
+Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx","04.01.26")
+Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx","03.01.26")
+Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx","02.01.26")
+Process.def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx","01.01.26")
