@@ -2,6 +2,7 @@ from Main.Entity.ClienteCreditoDTO import ClienteCredito
 
 class Venta:
     def __init__(self, 
+                    Dia='',
                     Total_venta_acumulada='', 
                     Venta_GPL='',
                     Venta_GNV='',
@@ -15,6 +16,7 @@ class Venta:
                     Hermes_monto_GLP='',
                     Hermes_monto_GNV1='',
                     Hermes_monto_GNV2=''):
+        self.Dia=Dia
         self.Total_venta_acumulada = Total_venta_acumulada
         self.Venta_GPL = Venta_GPL
         self.Venta_GNV = Venta_GNV

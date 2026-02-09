@@ -4,9 +4,11 @@ from Main.Entity.VentaDTO import Venta
 def def_Leer_parte_diario(Ruta_excel, dia_a_procesar):
     
     df = pd.read_excel(Ruta_excel, sheet_name=dia_a_procesar, header=None)
-    print("[INFO] Obteniendo Data...")
+    # print("[INFO] Obteniendo Data...")
     
     Venta_DTO=Venta()
+    Venta_DTO.Dia=dia_a_procesar
+
     # Data venta Liquidos, GLP, GNV, Cofide
     Venta_DTO.Total_venta_acumulada = float(str(df.iloc[11, 15]).replace(",", ""))
     Venta_DTO.Venta_GPL = float(str(df.iloc[7, 15]).replace(",", ""))
@@ -110,4 +112,5 @@ def def_Leer_parte_diario(Ruta_excel, dia_a_procesar):
             
     for Lista in Lista_clientes_credito:
         Venta_DTO.agregar_cliente_credito(Lista['cliente'],Lista['monto'])
+
     return Venta_DTO        
