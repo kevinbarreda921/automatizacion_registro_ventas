@@ -15,9 +15,9 @@ def def_RunProcess():
         # Dias = ["01.01.26","02.01.26","03.01.26","04.01.26","05.01.26","06.01.26","07.01.26","08.01.26","09.01.26", "10.01.26",
         #         "11.01.26","12.01.26","13.01.26","14.01.26","15.01.26","16.01.26","17.01.26","18.01.26","19.01.26", "20.01.26",
         #         "21.01.26","22.01.26","23.01.26"]
-        Dias = ["01.01.26","02.01.26","03.01.26","04.01.26","05.01.26","06.01.26","07.01.26","08.01.26","09.01.26", "10.01.26",
-                "11.01.26","12.01.26","13.01.26","14.01.26","15.01.26"]
-        # Dias = ["21.01.26","22.01.26"]
+        # Dias = ["01.01.26","02.01.26","03.01.26","04.01.26","05.01.26","06.01.26","07.01.26","08.01.26","09.01.26", "10.01.26",
+        #         "11.01.26","12.01.26","13.01.26","14.01.26","15.01.26"]
+        Dias = ["09.01.26"]
         for dia in Dias:
             # print(f"[INFO] Fecha procesar: "+dia)
             Venta_DTO=def_Leer_parte_diario("Main/Grifos/brasil/21.01.26/PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx", dia)
@@ -32,7 +32,8 @@ def def_RunProcess():
     except FileNotFoundError:
         print("[ \u274C ERROR] El archivo de Excel no existe.")
     except ValueError:
-        print(f"[ \u274C ERROR] El archivo existe, pero no se encontró la hoja: {dia_a_procesar}")
+        # print(f"[ \u274C ERROR] El archivo existe, pero no se encontró la hoja: {dia_a_procesar}")
+        print(f"[ \u274C ERROR] El archivo existe, pero no se encontró la hoja")
     except Exception as e:
         print(f"[ \u274C ERROR] Ocurrió un error inesperado: {e}")
     finally:

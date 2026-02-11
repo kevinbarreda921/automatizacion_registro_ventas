@@ -19,7 +19,9 @@ def def_Leer_parte_diario(Ruta_excel, dia_a_procesar):
     Venta_DTO.Total_Tarjeta_de_Credito_GNV = float(str(df.iloc[18, 15]).replace(",", "").replace("-", ""))
     
     Venta_DTO.Recaudo_Cofide_GNV = float(str(df.iloc[27, 15]).replace(",", ""))
-    Venta_DTO.Gastos = float(str(df.iloc[28, 15]).replace(",", ""))
+    Venta_DTO.Gastos = float(str(df.iloc[28, 15]).replace(",", "").replace("-", ""))
+    #LEER Error de Máquina		0.00	0.00 FILA 27 COLUMNA 15   VALOR 26
+    # PONERLO EN AV
     Venta_DTO.Ventas_con_transferencia = float(str(df.iloc[30, 15]).replace(",", ""))
     
     # Data Hermes
@@ -28,13 +30,13 @@ def def_Leer_parte_diario(Ruta_excel, dia_a_procesar):
     Venta_DTO.Hermes_monto_GNV1 = float(0)
     Venta_DTO.Hermes_monto_GNV2 = float(0)
     Hermes_contar_gnv = int(0)
-    contador_hermes = 120
+    contador_hermes = 55
     Buscar_tabla_hermes=0
     while True:
         Buscar_tabla_hermes+=1
         contador_hermes+=1
         tipo_combustible = str(df.iloc[contador_hermes, 16])
-        if(Buscar_tabla_hermes==10):
+        if(Buscar_tabla_hermes==50):
             continue
         else:
             if(tipo_combustible=='TIPO'):

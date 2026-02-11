@@ -8,13 +8,13 @@ def def_escribir_parte_diario(List_ventas_procesadas):
     # Buscar Fila para insertar datos
     Venta_DTO=Venta()
     
-    wb = openpyxl.load_workbook("Main/Grifos/brasil/REGISTRO VENTAS -  2026- 01 (1).xlsx")
+    wb = openpyxl.load_workbook("Main/Grifos/brasil/REGISTRO VENTAS -  2026- 01.xlsx")
     for venta in List_ventas_procesadas:
         Venta_DTO=venta
         print(f"[INFO] Registrando data:{Venta_DTO.Dia}")
 
         df = pd.read_excel(
-            "Main/Grifos/brasil/REGISTRO VENTAS -  2026- 01 (1).xlsx",
+            "Main/Grifos/brasil/REGISTRO VENTAS -  2026- 01.xlsx",
             sheet_name="32. BRASIL",
             header=None,
         )
@@ -54,6 +54,7 @@ def def_escribir_parte_diario(List_ventas_procesadas):
             sheet[Campo_Total_Tarjeta_de_Credito_GNV] = Venta_DTO.Total_Tarjeta_de_Credito_GNV        
             if Venta_DTO.Gastos != 0.0:
                 Campo_Gastos = "BY" + str(Fila_insert)
+                #PONERLO PUENTE PIDRA EN BN
                 sheet[Campo_Gastos] = Venta_DTO.Gastos
             
             if Venta_DTO.Ventas_con_transferencia != 0.0:
@@ -88,6 +89,9 @@ def def_escribir_parte_diario(List_ventas_procesadas):
                     Campo_dinamico = registro['Fila'] + str(Fila_insert)
                     sheet[Campo_dinamico] = Lista.Monto        
     
-    wb.save("Main/Grifos/brasil/REGISTRO VENTAS -  2026- 01 (1).xlsx")
+    wb.save("Main/Grifos/brasil/REGISTRO VENTAS -  2026- 01.xlsx")
+    
+    
+    
 
 
