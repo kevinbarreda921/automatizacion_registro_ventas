@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "vast-lightning-453521-e6",
+  "private_key_id": "8907d2746436b072761537cbe4809f27ef362797",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDPNUZuewQ8RhSS\n6VEelYNPn6n5NrmlgX2zfKwDnJsiegy4lnmXsUObPxIiEKO8hKKb+E6tUR3vcjB1\n5Vm5cwcGZ422PMEe44Lc9SHhdUo2Jkk7VL4xzrXH1Ke8V/grdRjO84TxA2SL/9Sb\n4v0OKpLXTKn6d1K2AKT8RP7aRrYuC1/2cKNurbXLJTGJUup1boYXmofx3V37jmx0\nJk0VCfZV2ROuUE0Qmo07XH86xCVpsH36ZCQJGDWT8ZcQGpkH6eypxJoO/3HWKSdt\nq8j1PFvFpYqGEArZmiXld22Lj519sT/Vl9+THttSJXyXVYG+5OQsv+rU962mccO7\n+cX5t0dtAgMBAAECggEAJJA9k+xANJSXN89VAaUXbTr65t+JxdNCR6RVxDNjyqMn\n0IC5BxQAHop0HC+8fN0YxpX76Ch6tFB9jahBe3B5Sl+GiaRR3a3+3xegeWTVihWa\ncY5EG4zi1dbIHHuXbq+0h3xANrlHCk9ECJf22IOZssUz718T6MrXUi6onALDTf9h\nkG3Ho4EeAD3BWjBEQ5i9LvUIfPHBFP3pr6/GIYd0oGPFFQtRXupkMfpl66zpxOf3\n915loWkkkDalJuMv5Vkz0EsHp77OTiebGQ7zo9lKyxP0spBe/ruxqN8xEZt2mwcb\n1JOk08FIJwmERUZWQO7+hHK/ONpnyQMXMO2RfJHnvwKBgQDnXhQTsSajfhKh6TnN\nRnhTlnHFAFWJY2eHJHW/4N1AEqbBegu16kzykGUVpvqIWJJZIK9/8kAsouHiqbkU\nkrI0AS21jWaOewspNVxcbgJvntJrvqECkKmMKyM71BqiEXJ1NRHMNW2nIzebQFD+\nNQbxRseWELq0Tj+fAbZmf3+r0wKBgQDlRLuGx53Fxw/vjlpXQxsl+IbSVDjEwtqQ\nfgXN2Oza7J9HU/33EuqpZEJ9xoGl+EZsrTPqf9I5gG+rmZCHjmVf7HP2RqMPDf6s\n0dPGYrPCgRqPdFeQ7rqDBnMCg7kGkaEjEfbA7l1Anflq720vxz8hTFMIU4a6/5Av\n0VLqMa13vwKBgQDc25GOuqyHpPFkXZ4vtfVm1VYFGCyO2bUZ7FP6tkx9vVAxoK9N\nGDwb0HquEJdXUDVjny/okvdvpIy8Mgfa+63gtr9Lb49Ws14UGDvyf5ETvChhcbeB\nG1a91u/rTK2fx8fa2q4CoX3q7lNGgD7Qaw4Vg9tCBPY05/0TbC8R6OOWwQKBgQCV\n638Q4GFcHhJenOCYZUpQZxaKXQaOK7jOeYoEFFC1y7tP4i2VLiqCwAv2wSKwTAyJ\nLi1fr1vhvAnJ1W48JjJGKpGdvo0L4CPkEIWCGbLggpnCqtpD7MfLvCDiyQ3prLsI\n+ss3V+dkxKh/c7cbYhf3BzjYnf3hNBKuIhwtBnUfcwKBgQC7XQuu0bZoUfogszXq\nqf8scR20pLFXF904Qp2qyehNKXAqBlJO+swe6GVELy8BSFrTodKwc/MLinlPfWeU\nrvgiFKGDUmvV61o6LXrzyNg5RLAyJmF7u9yzg5c3MacOH4xxRgm6INdK5isie75T\n7j1o1nXYjeLv9wpXCfzv6WQrZA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "excel-robot@vast-lightning-453521-e6.iam.gserviceaccount.com",
+  "client_id": "107557139944733745501",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/excel-robot%40vast-lightning-453521-e6.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

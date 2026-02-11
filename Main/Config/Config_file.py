@@ -1,16 +1,37 @@
 
-Lista_grifos = [
-    {'Grifo':'Brasil',
-     'Carpeta':'Brasil',
-     'Registro_venta':'REGISTRO VENTAS -  2026- 01.xlsx',
-     'Banco_file':'BRASIL LIQUIDOS.xls',
-     'Siges_File':'PARTE DIARIO -SIGES- 3ENERO- BRASIL.xlsx'},
-    {'Grifo':'Catacaos',
-     'Carpeta':'Catacaos',
-     'Registro_venta':'Catacaos.xlsx',
-     'Banco_file':'Catacaos.xls',
-     'Siges_File':'Catacaos.xlsx'}
-]
 
-for list in Lista_grifos:
- print(list.get('Grifo'))
+config_grifos = {
+    'BRASIL': [
+        {'Fila': '32. BRASIL',  'Dato': 'Hoja_registro_ventas'},
+        {'Fila': 'C',  'Dato': 'Total_venta_acumulada'},
+        {'Fila': 'D',  'Dato': 'Venta_GPL'},
+        {'Fila': 'E',  'Dato': 'Venta_GNV'},
+        {'Fila': 'F',  'Dato': 'Recaudo_Cofide_GNV'},
+        {'Fila': 'AO', 'Dato': 'Total_Tarjeta_de_Credito_Liquidos'},
+        {'Fila': 'AP', 'Dato': 'Total_Tarjeta_de_Credito_GLP'},
+        {'Fila': 'AQ', 'Dato': 'Total_Tarjeta_de_Credito_GNV'},
+        {'Fila': 'BY', 'Dato': 'Gastos'},
+        {'Fila': 'AY', 'Dato': 'Ventas_con_transferencia'},
+        {'Fila': 'AX', 'Dato': 'Hermes_monto_liquido'},
+        {'Fila': 'BD', 'Dato': 'Hermes_monto_GLP'},
+        {'Fila': 'BE', 'Dato': 'Hermes_monto_GNV1'},
+        {'Fila': 'BF', 'Dato': 'Hermes_monto_GNV2'}
+    ],
+    'ALMACENES': [
+        {'Fila': 'Brasil',  'Dato': 'Grifo'},
+        {'Fila': '32. BRASIL',  'Dato': 'Hoja_registro_ventas'},
+        {'Fila': 'C',  'Dato': 'Total_venta_acumulada'},
+        {'Fila': 'D',  'Dato': 'Venta_GPL'},
+        {'Fila': 'E',  'Dato': 'Venta_GNV'},
+        {'Fila': 'F',  'Dato': 'Recaudo_Cofide_GNV'},
+        {'Fila': 'AO', 'Dato': 'Total_Tarjeta_de_Credito_Liquidos'},
+        {'Fila': 'AP', 'Dato': 'Total_Tarjeta_de_Credito_GLP'},
+        {'Fila': 'AQ', 'Dato': 'Total_Tarjeta_de_Credito_GNV'},
+        {'Fila': 'BY', 'Dato': 'Gastos'},
+        {'Fila': 'AY', 'Dato': 'Ventas_con_transferencia'},
+        {'Fila': 'AX', 'Dato': 'Hermes_monto_liquido'},
+        {'Fila': 'BD', 'Dato': 'Hermes_monto_GLP'},
+        {'Fila': 'BE', 'Dato': 'Hermes_monto_GNV1'},
+        {'Fila': 'BF', 'Dato': 'Hermes_monto_GNV2'}
+    ]
+}

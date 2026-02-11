@@ -1,12 +1,13 @@
 import pandas as pd
 from Main.Entity.VentaDTO import Venta 
 
-def def_Leer_parte_diario(Ruta_excel, dia_a_procesar):
+def def_Leer_parte_diario(Ruta_excel,grifo,dia_a_procesar):
     
     df = pd.read_excel(Ruta_excel, sheet_name=dia_a_procesar, header=None)
     # print("[INFO] Obteniendo Data...")
     
     Venta_DTO=Venta()
+    Venta_DTO.Grifo=grifo
     Venta_DTO.Dia=dia_a_procesar
 
     # Data venta Liquidos, GLP, GNV, Cofide
