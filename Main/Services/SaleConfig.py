@@ -1,8 +1,7 @@
-import Main.Config.Config_file as config_grifos
+import Main.Config.Config_celdas_grifos as config_celdas
 
-
-def def_obtener_config_grifo(nombre_grifo):
-    registros = config_grifos.config_grifos.get(nombre_grifo)
+def def_obtener_config_celdas_grifo(nombre_grifo):
+    registros = config_celdas.config_celdas_grifos.get(nombre_grifo)
     if not registros:
         return None
     

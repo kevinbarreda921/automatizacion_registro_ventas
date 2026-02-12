@@ -3,8 +3,8 @@ import pandas as pd
 from datetime import datetime
 from Main.Entity.VentaDTO import Venta
 import json
-import Main.Config.Config_credit as Config_credit
-from Main.Services.SaleConfig import def_obtener_config_grifo
+import Main.Config.Config_credit_grifos as Config_credit_grifos
+from Main.Services.SaleConfig import def_obtener_config_celdas_grifo
 
 def def_escribir_parte_diario(List_ventas_procesadas,FILE_REGISTRO_VENTAS):
     # Buscar Fila para insertar datos
@@ -14,10 +14,12 @@ def def_escribir_parte_diario(List_ventas_procesadas,FILE_REGISTRO_VENTAS):
     for venta in List_ventas_procesadas:
         Venta_DTO=venta
         print(f"[INFO] Registrando data:{Venta_DTO.Dia}")
-
+        
+        ConfigColumna = def_obtener_config_celdas_grifo('BRASIL')
+        
         df = pd.read_excel(
             FILE_REGISTRO_VENTAS,
-            sheet_name="32. BRASIL",
+            sheet_name=ConfigColumna['Hoja_registro_ventas'],
             header=None,
         )
         Fila_insert = 0
@@ -37,8 +39,7 @@ def def_escribir_parte_diario(List_ventas_procesadas,FILE_REGISTRO_VENTAS):
             print("[ \u274C ERROR] No existe el día a registrar")
         else:
             
-            ConfigColumna = def_obtener_config_grifo('BRASIL')
-            nombre_hoja = "32. BRASIL"
+            nombre_hoja = ConfigColumna['Hoja_registro_ventas']
             sheet = wb[nombre_hoja]
             
             Campo_VentaLiquidos = ConfigColumna['Total_venta_acumulada'] + str(Fila_insert)
@@ -74,7 +75,7 @@ def def_escribir_parte_diario(List_ventas_procesadas,FILE_REGISTRO_VENTAS):
             sheet[Campo_Hermes_monto_GNV2] = Venta_DTO.Hermes_monto_GNV2        
             
             for Lista in Venta_DTO.ListClienteCredito:
-                registro = next((u for u in Config_credit.Lista_credito_brasil if u["CLiente"] == Lista.Cliente), None)
+                registro = next((u for u in Config_credit_grifos.Lista_credito_brasil if u["CLiente"] == Lista.Cliente), None)
                 if(registro!=None):
                     Campo_dinamico = registro['Fila'] + str(Fila_insert)
                     sheet[Campo_dinamico] = Lista.Monto        
