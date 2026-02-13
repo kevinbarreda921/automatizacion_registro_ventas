@@ -54,9 +54,21 @@ def def_RunProcess():
             print("")
             print("[INICIO] PROCESO INICIADO")
             for date_grifo_excel in lista_grifos_a_procesar:
-                Venta_DTO=def_Leer_parte_diario(FILE_PARTE_DIARIO+'/'+date_grifo_excel['Ruta'],date_grifo_excel['Grifo'],'21.01.26')
+                
+                Venta_DTO=def_Leer_parte_diario(FILE_PARTE_DIARIO+'/'+date_grifo_excel['Ruta'],date_grifo_excel['Grifo'],'04.01.26')
                 List_ventas_procesadas.append(Venta_DTO)
-                def_escribir_parte_diario(List_ventas_procesadas,FILE_REGISTRO_VENTAS)
+                print(json.dumps(List_ventas_procesadas, indent=4, default=lambda o: o.__dict__))
+                
+                # excel_file = pd.ExcelFile(FILE_PARTE_DIARIO+'/'+date_grifo_excel['Ruta'])
+                # nombres_hojas = excel_file.sheet_names
+                # for l in nombres_hojas:
+                #     Venta_DTO=def_Leer_parte_diario(FILE_PARTE_DIARIO+'/'+date_grifo_excel['Ruta'],date_grifo_excel['Grifo'], l)
+                #     List_ventas_procesadas.append(Venta_DTO)
+                #     print(json.dumps(List_ventas_procesadas, indent=4, default=lambda o: o.__dict__))
+                
+                
+        
+                # def_escribir_parte_diario(List_ventas_procesadas,FILE_REGISTRO_VENTAS)
                 print("[FIN] PROCESO FINALIZADO")
         except FileNotFoundError:
             print("Error: No se encontró la carpeta especificada.")
