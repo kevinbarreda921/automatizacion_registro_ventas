@@ -13,7 +13,7 @@ def def_escribir_parte_diario(List_ventas_procesadas,FILE_REGISTRO_VENTAS):
     wb = openpyxl.load_workbook(FILE_REGISTRO_VENTAS)
     for venta in List_ventas_procesadas:
         Venta_DTO=venta
-        print(f"[INFO] Registrando data:{Venta_DTO.Dia}")
+        print(f"[INFO] Registrando {Venta_DTO.Grifo} del día {Venta_DTO.Dia}")
         
         ConfigColumnWrite = def_obtener_celdas_a_escribir(Venta_DTO.Grifo)
         

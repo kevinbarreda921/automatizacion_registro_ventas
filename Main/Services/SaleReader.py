@@ -3,16 +3,16 @@ from Main.Entity.VentaDTO import Venta
 from Main.Services.SaleConfig import def_obtener_celdas_a_leer_letra,def_obtener_celdas_a_leer_numero
 
 
-def def_Leer_parte_diario(Ruta_excel,Grifo,dia_a_procesar):
+def def_Leer_parte_diario(Ruta_excel,Grifo,fecha_correcta,libro):
     
-    df = pd.read_excel(Ruta_excel, sheet_name=dia_a_procesar, header=None)
+    df = pd.read_excel(Ruta_excel, sheet_name=libro, header=None)
     # print("[INFO] Obteniendo Data...")
     df.columns = generar_letras_excel(len(df.columns))
     
     Venta_DTO=Venta()
     Venta_DTO.Grifo=Grifo
     
-    Venta_DTO.Dia=dia_a_procesar
+    Venta_DTO.Dia=fecha_correcta
     
     ConfigColumReadNumero = def_obtener_celdas_a_leer_numero(Grifo)
     ConfigColumReadLetra = def_obtener_celdas_a_leer_letra(Grifo)
@@ -82,6 +82,7 @@ def def_Leer_parte_diario(Ruta_excel,Grifo,dia_a_procesar):
         break
 
     contador_buscar_tabla_credito_padel = 10
+    cliente_credito_encontrado=0
     while True:
         contador_buscar_tabla_credito_padel+=1
         if(contador_buscar_tabla_credito_padel==15):
@@ -90,6 +91,8 @@ def def_Leer_parte_diario(Ruta_excel,Grifo,dia_a_procesar):
         else:
             Buscar_tabla_credito = str(df.iloc[contador_buscar_tabla_credito_padel, 0])
             if(Buscar_tabla_credito=='CLIENTE'):
+                cliente_credito_encontrado+=1
+
                 contador_buscar_tabla_credito_padel+=1
                 
                 # Total crédito
@@ -99,7 +102,7 @@ def def_Leer_parte_diario(Ruta_excel,Grifo,dia_a_procesar):
                 if str(df.iloc[Contador_credito, 0]) != "nan":
                     while True:
                         Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", "")).strip()
-                        if Contador_credito == 14:
+                        if Contador_credito == cliente_credito_encontrado:
                             Cliente_credito_total = float(str(df.iloc[Contador_credito, 6]).replace(",", ""))
                             Lista_clientes_credito.append(
                                 {"cliente": Cliente_credito, "monto": Cliente_credito_total}
