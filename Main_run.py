@@ -1,6 +1,6 @@
-from Main.BusinessLogic import Process
+from Main.BusinessLogic import Menu
 
-Process.def_RunProcess()
+Menu.def_run_menu()
 
 
 

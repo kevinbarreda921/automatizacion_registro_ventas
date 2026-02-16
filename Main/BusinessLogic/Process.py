@@ -1,47 +1,67 @@
+import time
+import os
+import pandas as pd
+import json 
 from Main.Entity.VentaDTO import Venta
 from Main.Services.SaleReader import def_Leer_parte_diario
 from Main.Services.SaleWrite import def_escribir_parte_diario
-import time
-import json
 from Main.Services.Date_Timer import def_mostrar_tiempo
-import pandas as pd
-from Main.Config.Global_parameters import FILE_REGISTRO_VENTAS
-from Main.Config.Global_parameters import FILE_PARTE_DIARIO
-from Main.Services.SaleConfig import def_obtener_archivos_siges
-from Main.Services.SaleConfig import def_procesar_listado_hojas
+from Main.Config.Global_parameters import GLOBAL_FILE_REGISTRO_VENTAS, GLOBAL_FILE_PARTE_DIARIO
+from Main.Services.SaleConfig import def_obtener_archivos_siges, def_procesar_listado_hojas
 
-def def_RunProcess():
+def ejecutar_proceso_base(mes, filtro_hojas_fn=None, fecha_esperada=None):
     inicio = time.time()
+    list_ventas_procesadas = []
     try:
-        Venta_DTO=Venta()
-        List_ventas_procesadas = []
-        print("[INICIO] PROCESO INICIADO")
-        lista_grifos_a_procesar=def_obtener_archivos_siges(FILE_PARTE_DIARIO)
-        for date_grifo_excel in lista_grifos_a_procesar:
-            
-            # Venta_DTO=def_Leer_parte_diario(FILE_PARTE_DIARIO+'/'+date_grifo_excel['Ruta'],date_grifo_excel['Grifo'],'04.01.26')
-            # List_ventas_procesadas.append(Venta_DTO)
-            # print(json.dumps(List_ventas_procesadas, indent=4, default=lambda o: o.__dict__))
-            
-            excel_file = pd.ExcelFile(FILE_PARTE_DIARIO+'/'+date_grifo_excel['Ruta'])
-            nombres_hojas = excel_file.sheet_names
-            mes_param='01'
-            hojas_procesadas = def_procesar_listado_hojas(nombres_hojas,mes_param)
-            for hp in hojas_procesadas:
-                Venta_DTO=def_Leer_parte_diario(FILE_PARTE_DIARIO+'/'+date_grifo_excel['Ruta'],date_grifo_excel['Grifo'], hp['fecha_correcta'],hp['libro'])
-                List_ventas_procesadas.append(Venta_DTO)
-            # print(json.dumps(List_ventas_procesadas, indent=4, default=lambda o: o.__dict__))    
-            
-        def_escribir_parte_diario(List_ventas_procesadas,FILE_REGISTRO_VENTAS)
+        lista_grifos = def_obtener_archivos_siges(GLOBAL_FILE_PARTE_DIARIO)
+        if not lista_grifos: return
 
-        print("[FIN] PROCESO FINALIZADO")
-    except FileNotFoundError:
-        print("[ \u274C ERROR] El archivo de Excel no existe.")
-    except ValueError:
-        print(f"[ \u274C ERROR] El archivo existe, pero no se encontró la hoja")
+        for grifo in lista_grifos:
+            ruta_completa = os.path.join(GLOBAL_FILE_PARTE_DIARIO, grifo['Ruta'])
+            excel_file = pd.ExcelFile(ruta_completa)
+            hojas_totales = def_procesar_listado_hojas(excel_file.sheet_names, mes)
+            
+            # 1. Filtramos las hojas por el criterio (ej. el día "15")
+            hojas_candidatas = [h for h in hojas_totales if filtro_hojas_fn(h)] if filtro_hojas_fn else hojas_totales
+
+            if not hojas_candidatas and fecha_esperada:
+                print(f"[❌ ERROR] El dia {fecha_esperada} no existe para el grifo {grifo['Grifo']}")
+                continue
+
+            for hoja in hojas_candidatas:
+                # 2. Aquí recuperamos tu validación de fecha completa
+                if fecha_esperada and hoja['fecha_correcta'] != fecha_esperada:
+                    print(f"[❌ ERROR] La fecha {fecha_esperada} no coincide con {hoja['fecha_correcta']} en {grifo['Grifo']}")
+                    continue
+
+                venta_dto = def_Leer_parte_diario(
+                    ruta_completa, 
+                    grifo['Grifo'], 
+                    hoja['fecha_correcta'], 
+                    hoja['libro']
+                )
+                list_ventas_procesadas.append(venta_dto)
+        # print(json.dumps(list_ventas_procesadas, indent=4, default=lambda o: o.__dict__))
+        # if list_ventas_procesadas:
+        #     def_escribir_parte_diario(list_ventas_procesadas, GLOBAL_FILE_REGISTRO_VENTAS)
+
     except Exception as e:
-        print(f"[ \u274C ERROR] Ocurrió un error inesperado: {e}")
+        print(f"[❌ ERROR] Ocurrió un error inesperado: {e}")
     finally:
         fin = time.time()
-        print(f"Tiempo de ejecución: {def_mostrar_tiempo(inicio,fin)}")
+        print(f"Tiempo de ejecución: {def_mostrar_tiempo(inicio, fin)}")
+        print("\n==============================================================================")
 
+# --- Así quedarían tus funciones llamadas por el Menu ---
+
+def def_procesar_hoy(dia, mes, fecha):
+    # Pasamos la 'fecha' para que la función base la valide
+    ejecutar_proceso_base(mes, lambda h: h['dia'] == dia, fecha_esperada=fecha)
+
+def def_procesar_por_dia(dia, mes):
+    # Aquí no validamos fecha completa, solo el número de día
+    ejecutar_proceso_base(mes, lambda h: h['dia'] == dia)
+
+def def_procesar_por_mes(mes):
+    # Procesa todo el mes sin filtros específicos
+    ejecutar_proceso_base(mes)

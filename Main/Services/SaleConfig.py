@@ -2,6 +2,7 @@ import Main.Config.Config_celdas_grifos as config_celdas
 import re
 import Main.Config.Config_celdas_grifos as Config_celdas_grifos
 import os
+from Main.Config.Global_parameters import GLOBAL_ANIO
 
 def def_obtener_celdas_a_escribir(nombre_grifo):
     registros = config_celdas.config_celdas_grifos.get(nombre_grifo)
@@ -32,42 +33,43 @@ def def_obtener_celdas_a_leer_numero(nombre_grifo):
 def def_obtener_archivos_siges(ruta_carpeta):
     lista_grifos_a_procesar = []
     try:
-       # 1. Obtenemos la lista de archivos reales
-       Listado_grifos = list(Config_celdas_grifos.config_celdas_grifos.keys())
-       
-       archivos = os.listdir(ruta_carpeta)
-    
-       print(f"--- Analizando archivos en: {ruta_carpeta} ---\n")
-    
-       for nombre_archivo in archivos:
-           nombre_min = nombre_archivo.lower()
-           
-           encontrado = False
-           lugar_detectado = ""
-    
-           for lugar in Listado_grifos:
-               if lugar.lower() in nombre_min:
-                   encontrado = True
-                   lugar_detectado = lugar
-                   break
-    
-           if encontrado:
-               print(f"✅ EXISTE: El archivo '{nombre_archivo}' es un registro de [{lugar_detectado.upper()}]")
-               datos_grifo = {
-                   'Grifo': lugar_detectado.upper(),
-                   'Ruta': nombre_archivo
-                   }
-               lista_grifos_a_procesar.append(datos_grifo)
-           else:
-               print(f"❌ NO REGISTRADO: El archivo '{nombre_archivo}' no coincide con ninguna palabra clave")
-       return lista_grifos_a_procesar
+        Listado_grifos = list(Config_celdas_grifos.config_celdas_grifos.keys())
+        
+        archivos = os.listdir(ruta_carpeta)
+        print(f"\n[INFO] Analizando archivos en: {ruta_carpeta}\n")
+        for nombre_archivo in archivos:
+            nombre_min = nombre_archivo.lower()
+            
+            encontrado = False
+            lugar_detectado = ""
+            
+            for lugar in Listado_grifos:
+                if lugar.lower() in nombre_min:
+                    encontrado = True
+                    lugar_detectado = lugar
+                    break
+                
+            if encontrado:
+
+                datos_grifo = {
+                    'Grifo': lugar_detectado.upper(),
+                    'Ruta': nombre_archivo
+                    }
+                lista_grifos_a_procesar.append(datos_grifo)
+            else:
+                print(f"[\u274C ERROR] NO REGISTRADO: El archivo '{nombre_archivo}' no coincide con ninguna palabra clave")
+        if lista_grifos_a_procesar:
+            print(f"\n[INFO] Archivos a procesar {len(lista_grifos_a_procesar)}:")
+            for lst in lista_grifos_a_procesar:
+                print(f"[INFO]: ✅ El archivo '{lst['Ruta']}' es un registro de [{lst['Grifo']}]")
+            print(f"\n")
+        return lista_grifos_a_procesar
     except FileNotFoundError:
         print("Error: No se encontró la carpeta especificada.")
 
 def def_procesar_listado_hojas(hojas,mes_param):
     lista_resultado = []
-    anio_actual = "2026"
-    # Formateamos mes y año para asegurar 2 dígitos (ej: '01' y '26')
+    anio_actual = GLOBAL_ANIO
     mm = str(mes_param).zfill(2)
     yy = str(anio_actual)[-2:]
     
