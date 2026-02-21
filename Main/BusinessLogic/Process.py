@@ -42,8 +42,8 @@ def ejecutar_proceso_base(mes, filtro_hojas_fn=None, fecha_esperada=None):
                 )
                 list_ventas_procesadas.append(venta_dto)
         # print(json.dumps(list_ventas_procesadas, indent=4, default=lambda o: o.__dict__))
-        # if list_ventas_procesadas:
-        #     def_escribir_parte_diario(list_ventas_procesadas, GLOBAL_FILE_REGISTRO_VENTAS)
+        if list_ventas_procesadas:
+            def_escribir_parte_diario(list_ventas_procesadas, GLOBAL_FILE_REGISTRO_VENTAS)
 
     except Exception as e:
         print(f"[❌ ERROR] Ocurrió un error inesperado: {e}")
