@@ -62,11 +62,17 @@ def def_escribir_parte_diario(List_ventas_procesadas,FILE_REGISTRO_VENTAS):
             Campo_Hermes_monto_GNV2 = ConfigColumnWrite['Hermes_monto_GNV2'] + str(Fila_insert)  
 
             if(ConfigColumnWrite['Total_venta_acumulada']!=''):
-                sheet[Campo_VentaLiquidos] = '='+str(Venta_DTO.Total_venta_acumulada)+'-'+Campo_venta_glp+'-'+Campo_venta_gnv
-            if(ConfigColumnWrite['Venta_GPL']!=''):
-                sheet[Campo_venta_glp] = Venta_DTO.Venta_GPL
-            if(ConfigColumnWrite['Venta_GNV']!=''):
-                sheet[Campo_venta_gnv] = Venta_DTO.Venta_GNV
+                if(ConfigColumnWrite['Venta_GNV']!='' and ConfigColumnWrite['Venta_GNV']!=''):
+                    sheet[Campo_VentaLiquidos] = '='+str(Venta_DTO.Total_venta_acumulada)+'-'+Campo_venta_glp+'-'+Campo_venta_gnv
+                    sheet[Campo_venta_glp] = Venta_DTO.Venta_GPL
+                    sheet[Campo_venta_gnv] = Venta_DTO.Venta_GNV
+                else:
+                    sheet[Campo_VentaLiquidos] = '='+str(Venta_DTO.Total_venta_acumulada)+'-'+Campo_venta_glp
+                    sheet[Campo_venta_glp] = Venta_DTO.Venta_GPL
+            #if(ConfigColumnWrite['Venta_GPL']!=''):
+            #    sheet[Campo_venta_glp] = Venta_DTO.Venta_GPL
+            #if(ConfigColumnWrite['Venta_GNV']!=''):
+            #    sheet[Campo_venta_gnv] = Venta_DTO.Venta_GNV
             if(ConfigColumnWrite['Recaudo_Cofide_GNV']!=''):
                 sheet[Campo_venta_rec_cofide] = Venta_DTO.Recaudo_Cofide_GNV        
             if(ConfigColumnWrite['Total_Tarjeta_de_Credito_Liquidos']!=''):

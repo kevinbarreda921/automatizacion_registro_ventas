@@ -49,7 +49,7 @@ def ejecutar_proceso_base(mes, filtro_hojas_fn=None, fecha_esperada=None):
         print(f"[❌ ERROR] Ocurrió un error inesperado: {e}")
     finally:
         fin = time.time()
-        print(f"Tiempo de ejecución: {def_mostrar_tiempo(inicio, fin)}")
+        print(f"\n Tiempo de ejecución: {def_mostrar_tiempo(inicio, fin)} \n")
         print("\n==============================================================================")
 
 # --- Así quedarían tus funciones llamadas por el Menu ---
