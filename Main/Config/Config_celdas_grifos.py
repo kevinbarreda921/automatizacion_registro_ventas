@@ -15,7 +15,11 @@ config_celdas_grifos = {
         {'ReadNum': 'AUTO', 'ReadLetra': 'O'  ,'Write': 'AX', 'Dato': 'Hermes_monto_liquido'},
         {'ReadNum': 'AUTO','ReadLetra': 'O'   ,'Write': 'BD', 'Dato': 'Hermes_monto_GLP'},
         {'ReadNum': 'AUTO', 'ReadLetra': 'O'  ,'Write': 'BE', 'Dato': 'Hermes_monto_GNV1'},
-        {'ReadNum': 'AUTO', 'ReadLetra': 'O'  ,'Write': 'BF', 'Dato': 'Hermes_monto_GNV2'}
+        {'ReadNum': 'AUTO', 'ReadLetra': 'O'  ,'Write': 'BF', 'Dato': 'Hermes_monto_GNV2'},
+        {'ReadNum': '',     'ReadLetra': 'Q'   ,'Write': '',   'Dato': 'TipoDescuento'},
+        {'ReadNum': '',     'ReadLetra': 'S'   ,'Write': 'AO',   'Dato': 'DescuentoLiquidos'},
+        {'ReadNum': '',     'ReadLetra': 'S'   ,'Write': 'AP',   'Dato': 'DescuentoGLP'},
+        {'ReadNum': 26,     'ReadLetra': 'P'   ,'Write': 'AR',   'Dato': 'ErrorMaquina'}
     ],
     'PUENTE PIEDRA': [
         {'ReadNum': '',     'ReadLetra': ''   ,'Write': '01. PUENTE P.',  'Dato': 'Hoja_registro_ventas'},
@@ -33,7 +37,33 @@ config_celdas_grifos = {
         {'ReadNum': 'AUTO', 'ReadLetra': 'O'  ,'Write': 'AT', 'Dato': 'Hermes_monto_liquido'},
         {'ReadNum': 'AUTO', 'ReadLetra': 'O'  ,'Write': 'BA', 'Dato': 'Hermes_monto_GLP'},
         {'ReadNum': '',     'ReadLetra': ''   ,'Write': '',   'Dato': 'Hermes_monto_GNV1'},
-        {'ReadNum': '',     'ReadLetra': ''   ,'Write': '',   'Dato': 'Hermes_monto_GNV2'}
+        {'ReadNum': '',     'ReadLetra': ''   ,'Write': '',   'Dato': 'Hermes_monto_GNV2'},
+        {'ReadNum': '',     'ReadLetra': 'Q'   ,'Write': '',   'Dato': 'TipoDescuento'},
+        {'ReadNum': '',     'ReadLetra': 'S'   ,'Write': 'AO',   'Dato': 'DescuentoLiquidos'},
+        {'ReadNum': '',     'ReadLetra': 'S'   ,'Write': 'AP',   'Dato': 'DescuentoGLP'},
+        {'ReadNum': 26,     'ReadLetra': 'P'   ,'Write': 'AR',   'Dato': 'ErrorMaquina'}
+    ],
+    'CHILCA': [
+        {'ReadNum': '',     'ReadLetra': ''   ,'Write': '04. CHILCA',  'Dato': 'Hoja_registro_ventas'},
+        {'ReadNum': 11,     'ReadLetra': 'P'  ,'Write': 'C',  'Dato': 'Total_venta_acumulada'},
+        {'ReadNum': 8,      'ReadLetra': 'P'  ,'Write': 'D',  'Dato': 'Venta_GPL'},
+        {'ReadNum': '',     'ReadLetra': ''   ,'Write': '',   'Dato': 'Venta_GNV'},
+        {'ReadNum': '',     'ReadLetra': ''   ,'Write': '',   'Dato': 'Recaudo_Cofide_GNV'},
+        {'ReadNum': 16,     'ReadLetra': 'P'  ,'Write': 'AK', 'Dato': 'Total_Tarjeta_de_Credito_Liquidos'},
+        {'ReadNum': 17,     'ReadLetra': 'P'  ,'Write': 'AL', 'Dato': 'Total_Tarjeta_de_Credito_GLP'},
+        {'ReadNum': '',     'ReadLetra': ''   ,'Write': '',   'Dato': 'Total_Tarjeta_de_Credito_GNV'},
+        {'ReadNum': 28,     'ReadLetra': 'P'  ,'Write': 'BN', 'Dato': 'Gastos'},
+        {'ReadNum': 30,     'ReadLetra': 'P'  ,'Write': 'AP', 'Dato': 'Ventas_con_transferencia'},
+        {'ReadNum': '',     'ReadLetra': 'Q'  ,'Write': '',   'Dato': 'Tipo_Hermes'},
+        {'ReadNum': '',     'ReadLetra': 'O'  ,'Write': '',   'Dato': 'Importe_Hermes'},
+        {'ReadNum': 'AUTO', 'ReadLetra': 'O'  ,'Write': 'AT', 'Dato': 'Hermes_monto_liquido'},
+        {'ReadNum': 'AUTO', 'ReadLetra': 'O'  ,'Write': 'BA', 'Dato': 'Hermes_monto_GLP'},
+        {'ReadNum': '',     'ReadLetra': ''   ,'Write': '',   'Dato': 'Hermes_monto_GNV1'},
+        {'ReadNum': '',     'ReadLetra': ''   ,'Write': '',   'Dato': 'Hermes_monto_GNV2'},
+        {'ReadNum': '',     'ReadLetra': 'Q'   ,'Write': '',   'Dato': 'TipoDescuento'},
+        {'ReadNum': '',     'ReadLetra': 'S'   ,'Write': 'AO',   'Dato': 'DescuentoLiquidos'},
+        {'ReadNum': '',     'ReadLetra': 'S'   ,'Write': 'AP',   'Dato': 'DescuentoGLP'},
+        {'ReadNum': 26,     'ReadLetra': 'P'   ,'Write': 'AR',   'Dato': 'ErrorMaquina'}
     ]
 }
 

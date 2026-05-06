@@ -4,7 +4,9 @@ from datetime import datetime
 from Main.Entity.VentaDTO import Venta
 import json
 import Main.Config.Config_credit_grifos as Config_credit_grifos
-from Main.Services.SaleConfig import def_obtener_celdas_a_escribir
+from Main.Services.SaleConfig import def_obtener_celdas_a_escribir,def_obtener_columnas_creditos
+
+
 
 def def_escribir_parte_diario(List_ventas_procesadas,FILE_REGISTRO_VENTAS):
     # Buscar Fila para insertar datos
@@ -60,6 +62,9 @@ def def_escribir_parte_diario(List_ventas_procesadas,FILE_REGISTRO_VENTAS):
             Campo_Hermes_monto_GLP = ConfigColumnWrite['Hermes_monto_GLP'] + str(Fila_insert)
             Campo_Hermes_monto_GNV1 = ConfigColumnWrite['Hermes_monto_GNV1'] + str(Fila_insert)
             Campo_Hermes_monto_GNV2 = ConfigColumnWrite['Hermes_monto_GNV2'] + str(Fila_insert)  
+            Campo_descuentoGLP = ConfigColumnWrite['DescuentoGLP'] + str(Fila_insert)  
+            Campo_descuentoLiquidos = ConfigColumnWrite['DescuentoLiquidos'] + str(Fila_insert)  
+            Campo_ErrorMaquina = ConfigColumnWrite['ErrorMaquina'] + str(Fila_insert)  
 
             if(ConfigColumnWrite['Total_venta_acumulada']!=''):
                 if(ConfigColumnWrite['Venta_GNV']!='' and ConfigColumnWrite['Venta_GNV']!=''):
@@ -96,20 +101,28 @@ def def_escribir_parte_diario(List_ventas_procesadas,FILE_REGISTRO_VENTAS):
             if(ConfigColumnWrite['Hermes_monto_GNV1']!=''):
                 sheet[Campo_Hermes_monto_GNV1] = Venta_DTO.Hermes_monto_GNV1
             if(ConfigColumnWrite['Hermes_monto_GNV2']!=''):
-                sheet[Campo_Hermes_monto_GNV2] = Venta_DTO.Hermes_monto_GNV2        
+                sheet[Campo_Hermes_monto_GNV2] = Venta_DTO.Hermes_monto_GNV2
+            if(ConfigColumnWrite['DescuentoGLP']!=''):
+                if Venta_DTO.DescuentoGLP != 0.0:
+                    sheet[Campo_descuentoGLP] = Venta_DTO.DescuentoGLP    
+            if(ConfigColumnWrite['DescuentoLiquidos']!=''):
+                if Venta_DTO.DescuentoLiquidos != 0.0:
+                    sheet[Campo_descuentoLiquidos] = Venta_DTO.DescuentoLiquidos        
+            if(ConfigColumnWrite['ErrorMaquina']!=''):
+                if Venta_DTO.ErrorMaquina != 0.0:
+                    sheet[Campo_ErrorMaquina] = Venta_DTO.ErrorMaquina   
             
-            if(Venta_DTO.Grifo=='BRASIL'):
-                for Lista in Venta_DTO.ListClienteCredito:
-                    registro = next((u for u in Config_credit_grifos.Lista_credito_brasil if u["CLiente"] == Lista.Cliente), None)
-                    if(registro!=None):
-                        Campo_dinamico = registro['Fila'] + str(Fila_insert)
-                        sheet[Campo_dinamico] = Lista.Monto  
-            else:
-                for Lista in Venta_DTO.ListClienteCredito:
-                    registro = next((u for u in Config_credit_grifos.Lista_credito_puentepiedra if u["CLiente"] == Lista.Cliente), None)
-                    if(registro!=None):
-                        Campo_dinamico = registro['Fila'] + str(Fila_insert)
-                        sheet[Campo_dinamico] = Lista.Monto    
+            
+            ConfigColumCreditos = def_obtener_columnas_creditos(Venta_DTO.Grifo)
+    
+            for Lista in Venta_DTO.ListClienteCredito:
+                # registro = next((u for u in ConfigColumCreditos if u["CLiente"] == Lista.Cliente), None)
+                registro = ConfigColumCreditos.get(Lista.Cliente)
+                if(registro!=None):
+                    Campo_dinamico = registro + str(Fila_insert)
+                    sheet[Campo_dinamico] = Lista.Monto  
+                else:
+                    print(f"[\u274C ERROR] NO ENCONTRADO: El cliente de credito '{Lista.Cliente}' del grifo '{Venta_DTO.Grifo}' ")
     
     wb.save(FILE_REGISTRO_VENTAS)
     

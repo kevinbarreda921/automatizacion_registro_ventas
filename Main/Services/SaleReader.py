@@ -38,6 +38,8 @@ def def_Leer_parte_diario(Ruta_excel,Grifo,fecha_correcta,libro):
     # PONERLO EN AV
     if(ConfigColumReadLetra['Ventas_con_transferencia']!=''):
         Venta_DTO.Ventas_con_transferencia = float(str(df.loc[ConfigColumReadNumero['Ventas_con_transferencia']-1, ConfigColumReadLetra['Ventas_con_transferencia']]).replace(",", ""))
+    if(ConfigColumReadLetra['ErrorMaquina']!=''):
+        Venta_DTO.ErrorMaquina = float(str(df.loc[ConfigColumReadNumero['ErrorMaquina']-1, ConfigColumReadLetra['ErrorMaquina']]).replace(",", ""))
     
     # Data Hermes
     Venta_DTO.Hermes_monto_liquido = float(0)
@@ -53,12 +55,12 @@ def def_Leer_parte_diario(Ruta_excel,Grifo,fecha_correcta,libro):
             print(f"[ \u274C ERROR] No existe cuadro Hermes")
             continue
         else:
-            tipo_combustible = str(df.loc[contador_buscar_cuadro_hermes, ConfigColumReadLetra['Tipo_Hermes']])
+            tipo_combustible = str(df.loc[contador_buscar_cuadro_hermes, ConfigColumReadLetra['Tipo_Hermes']]).replace(" ", "")
             if(tipo_combustible=='TIPO'):
                 contador_buscar_cuadro_hermes+=1
                 while True:
                     
-                    tipo_combustible = str(df.loc[contador_buscar_cuadro_hermes, ConfigColumReadLetra['Tipo_Hermes']])
+                    tipo_combustible = str(df.loc[contador_buscar_cuadro_hermes, ConfigColumReadLetra['Tipo_Hermes']]).replace(" ", "")
                     if (tipo_combustible!='nan'):
                         tipo_combustible_precio = float(str(df.loc[contador_buscar_cuadro_hermes, ConfigColumReadLetra['Importe_Hermes']]).replace(",", ""))
                         if tipo_combustible == "Líquido":
@@ -75,6 +77,37 @@ def def_Leer_parte_diario(Ruta_excel,Grifo,fecha_correcta,libro):
                             print(f"[ \u274C ERROR] Nuevo combustible de cuadro Hermes")
                         contador_buscar_cuadro_hermes+=1
                     else:
+                        break
+            else:
+                continue
+                    
+        break
+    contador_buscar_cuadro_variaciones = 15
+    Venta_DTO.DescuentoLiquidos=0
+    while True:
+        contador_buscar_cuadro_variaciones+=1
+        if(contador_buscar_cuadro_variaciones==25):
+            print(f"[ \u274C ERROR] No existe cuadro de variaciones")
+            continue
+        else:
+            tipo_combustible = str(df.loc[contador_buscar_cuadro_variaciones, ConfigColumReadLetra['TipoDescuento']]).replace(" ", "")
+            if(tipo_combustible=='COMBUSTIBLE'):
+                contador_buscar_cuadro_variaciones+=1
+                while True:
+                    
+                    tipo_combustible = str(df.loc[contador_buscar_cuadro_variaciones, ConfigColumReadLetra['TipoDescuento']]).replace(" ", "")
+                    if (tipo_combustible!='nan'):
+                        if (tipo_combustible!='TOTAL'):
+                            precio_variaciones = str(df.loc[contador_buscar_cuadro_variaciones, ConfigColumReadLetra['DescuentoGLP']]).replace(" ", "").replace(",", "")
+                            if tipo_combustible == "GLP":
+                                Venta_DTO.DescuentoGLP = float(precio_variaciones)
+                            else:
+                                Venta_DTO.DescuentoLiquidos = float(Venta_DTO.DescuentoLiquidos)+float(precio_variaciones)
+                            contador_buscar_cuadro_variaciones+=1
+                        else:
+                            break
+                    else:
+                        print(f"[ \u274C ERROR] Dato incorrecto en variaciones")
                         break
             else:
                 continue

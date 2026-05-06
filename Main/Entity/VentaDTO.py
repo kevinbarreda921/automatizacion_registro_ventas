@@ -17,7 +17,10 @@ class Venta:
                     Hermes_monto_liquido='',
                     Hermes_monto_GLP='',
                     Hermes_monto_GNV1='',
-                    Hermes_monto_GNV2=''):
+                    Hermes_monto_GNV2='',
+                    DescuentoGLP='',
+                    DescuentoLiquidos='',
+                    ErrorMaquina=''):
         self.Grifo=Grifo
         self.Hoja_grifo=Hoja_grifo
         self.Dia=Dia
@@ -34,6 +37,9 @@ class Venta:
         self.Hermes_monto_GLP = Hermes_monto_GLP
         self.Hermes_monto_GNV1 = Hermes_monto_GNV1
         self.Hermes_monto_GNV2 = Hermes_monto_GNV2
+        self.DescuentoGLP = DescuentoGLP
+        self.DescuentoLiquidos = DescuentoLiquidos
+        self.ErrorMaquina = ErrorMaquina
         self.ListClienteCredito = [] 
         
     def agregar_cliente_credito(self, Cliente, Monto):

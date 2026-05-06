@@ -1,6 +1,6 @@
 import Main.Config.Config_celdas_grifos as config_celdas
 import re
-import Main.Config.Config_celdas_grifos as Config_celdas_grifos
+import Main.Config.Config_credit_grifos as config_credit
 import os
 from Main.Config.Global_parameters import GLOBAL_ANIO
 
@@ -21,6 +21,7 @@ def def_obtener_celdas_a_leer_letra(nombre_grifo):
     objeto_mapeo = {item['Dato']: item['ReadLetra'] for item in registros}
     
     return objeto_mapeo
+
 def def_obtener_celdas_a_leer_numero(nombre_grifo):
     registros = config_celdas.config_celdas_grifos.get(nombre_grifo)
     if not registros:
@@ -30,10 +31,19 @@ def def_obtener_celdas_a_leer_numero(nombre_grifo):
     
     return objeto_mapeo
 
+def def_obtener_columnas_creditos(nombre_grifo):
+    registros = config_credit.config_columna_creditos.get(nombre_grifo)
+    if not registros:
+        return None
+    
+    objeto_mapeo = {item['CLiente']: item['Columna'] for item in registros}
+    
+    return objeto_mapeo
+
 def def_obtener_archivos_siges(ruta_carpeta):
     lista_grifos_a_procesar = []
     try:
-        Listado_grifos = list(Config_celdas_grifos.config_celdas_grifos.keys())
+        Listado_grifos = list(config_celdas.config_celdas_grifos.keys())
         
         archivos = os.listdir(ruta_carpeta)
         print(f"\n[INFO] Analizando archivos en: {ruta_carpeta}\n")
