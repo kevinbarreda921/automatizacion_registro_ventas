@@ -36,7 +36,7 @@ def def_obtener_columnas_creditos(nombre_grifo):
     if not registros:
         return None
     
-    objeto_mapeo = {item['CLiente']: item['Columna'] for item in registros}
+    objeto_mapeo = {item['Cliente']: item['Columna'] for item in registros}
     
     return objeto_mapeo
 

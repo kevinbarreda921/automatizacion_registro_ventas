@@ -37,7 +37,7 @@ def def_Leer_parte_diario(Ruta_excel,Grifo,fecha_correcta,libro):
     #LEER Error de Máquina		0.00	0.00 FILA 27 COLUMNA 15   VALOR 26
     # PONERLO EN AV
     if(ConfigColumReadLetra['Ventas_con_transferencia']!=''):
-        Venta_DTO.Ventas_con_transferencia = float(str(df.loc[ConfigColumReadNumero['Ventas_con_transferencia']-1, ConfigColumReadLetra['Ventas_con_transferencia']]).replace(",", ""))
+        Venta_DTO.Ventas_con_transferencia = float(str(df.loc[ConfigColumReadNumero['Ventas_con_transferencia']-1, ConfigColumReadLetra['Ventas_con_transferencia']]).replace(",", "").replace("-", ""))
     if(ConfigColumReadLetra['ErrorMaquina']!=''):
         Venta_DTO.ErrorMaquina = float(str(df.loc[ConfigColumReadNumero['ErrorMaquina']-1, ConfigColumReadLetra['ErrorMaquina']]).replace(",", ""))
     
@@ -47,11 +47,11 @@ def def_Leer_parte_diario(Ruta_excel,Grifo,fecha_correcta,libro):
     Venta_DTO.Hermes_monto_GNV1 = float(0)
     Venta_DTO.Hermes_monto_GNV2 = float(0)
     Hermes_contar_gnv= float(0)
-    contador_buscar_cuadro_hermes = 55
+    contador_buscar_cuadro_hermes = 40
 
     while True:
         contador_buscar_cuadro_hermes+=1
-        if(contador_buscar_cuadro_hermes==400):
+        if(contador_buscar_cuadro_hermes==100):
             print(f"[ \u274C ERROR] No existe cuadro Hermes")
             continue
         else:
