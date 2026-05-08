@@ -40,14 +40,18 @@ config_columna_creditos= {
       {'Columna':'H','Cliente':'MUNICIPALIDAD DEL CENTRO POBLADO HUANCAQUITO BAJO'},
       {'Columna':'N','Cliente':'PETROTHOR SOCIEDAD ANONIMA CERRADA'}
    ],
-   'TULIS':[
-      {'Columna':'X','Cliente':'CORPORACION TICSANI E.I.R.L.'},
-      {'Columna':'J','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC'},
-      {'Columna':'S','Cliente':'PETROTHOR SOCIEDAD ANONIMA CERRADA'}
+   'MAKITA':[
+      {'Columna':'H','Cliente':'VACIO'}
    ],
-   'QUISTOCOCHA':[
-      {'Columna':'H','Cliente':'HONDA SELVA DEL PERU S.A.'},
-      {'Columna':'L','Cliente':'PETRO WORLD TRANSPORTES DEL PERU SOCIEDAD ANONIMA CERRADA'}
+      'SAN PABLO':[
+      {'Columna':'K','Cliente':'C & M SERVICENTROS SOCIEDAD ANONIMA CERRADA'},
+      {'Columna':'I','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC'}
+   ],
+   
+   'HUANCHACO':[
+      {'Columna':'I','Cliente':'C & M SERVICENTROS SOCIEDAD ANONIMA CERRADA'},
+      {'Columna':'T','Cliente':'RUIZ PEDRO LUIS ELBER'},
+      {'Columna':'H','Cliente':'RED FUEL S.A.'}
    ],
    'ENACE':[
       {'Columna':'K','Cliente':'RED FUEL S.A.'},
@@ -58,25 +62,31 @@ config_columna_creditos= {
       {'Columna':'W','Cliente':'GA INGENIEROS CONSTRUCTORES S.A.C.'}
    ],
    'ACAPULCO':[
-      {'Columna':'H','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC'},
+      {'Columna':'H','Cliente':'C & M SERVICENTROS SOCIEDAD ANONIMA CERRADA'},
+      {'Columna':'K','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC'},
       {'Columna':'I','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC MAGNEX'},
       {'Columna':'J','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC PROTSSA'},
       {'Columna':'L','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC PROTSSA'},
       {'Columna':'N','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC PROTSSA'},
       {'Columna':'T','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC QUIMTIA'},
       {'Columna':'U','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC PROTSSA'},
-      {'Columna':'V','Cliente':'SERVICIOS ENERGETICOS AMBIENTALES S.R.L. - SEA S.R.L.'},
-      {'Columna':'Y','Cliente':'GONZALES Y DE LA CRUZ SAC - GOYDEL'},
-      {'Columna':'AL','Cliente':'PETROTHOR SOCIEDAD ANONIMA CERRADA'},
+      {'Columna':'N','Cliente':'SERVICIOS ENERGETICOS AMBIENTALES S.R.L. - SEA S.R.L.'},
+      {'Columna':'U','Cliente':'GONZALES Y DE LA CRUZ SAC - GOYDEL'},
+      {'Columna':'T','Cliente':'PETROTHOR SOCIEDAD ANONIMA CERRADA'},
       {'Columna':'AL','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC WOW'},
       {'Columna':'AL','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SACM INDRA'},
       {'Columna':'AL','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SACM MAGNEX'},
       {'Columna':'AL','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC INDRA'},
       {'Columna':'AL','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC MAGNEX'}
    ],
-   'SAN PABLO':[
-      {'Columna':'K','Cliente':'C & M SERVICENTROS SOCIEDAD ANONIMA CERRADA'},
-      {'Columna':'I','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC'}
+   'TULIS':[
+      {'Columna':'X','Cliente':'CORPORACION TICSANI E.I.R.L.'},
+      {'Columna':'J','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC'},
+      {'Columna':'S','Cliente':'PETROTHOR SOCIEDAD ANONIMA CERRADA'}
+   ],
+   'QUISTOCOCHA':[
+      {'Columna':'H','Cliente':'HONDA SELVA DEL PERU S.A.'},
+      {'Columna':'L','Cliente':'PETRO WORLD TRANSPORTES DEL PERU SOCIEDAD ANONIMA CERRADA'}
    ],
    'VELITA':[
       {'Columna':'M','Cliente':'REPRESENTACIONES VARGAS S.A.'},
@@ -85,10 +95,5 @@ config_columna_creditos= {
       {'Columna':'I','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC'},
       {'Columna':'J','Cliente':'PROGRAMA NACIONAL DE SANEAMIENTO RURAL'},  # está en SIGES pero no jaló aquí
       {'Columna':'S','Cliente':'PETRO WORLD TRANSPORTES DEL PERU SOCIEDAD ANONIMA CERRADA'}  # está en SIGES pero no jaló aquí
-   ],
-   'HUANCHACO':[
-      {'Columna':'I','Cliente':'C & M SERVICENTROS SOCIEDAD ANONIMA CERRADA'},
-      {'Columna':'T','Cliente':'RUIZ PEDRO LUIS ELBER'},
-      {'Columna':'H','Cliente':'RED FUEL S.A.'}
-   ] 
+   ]
 }
