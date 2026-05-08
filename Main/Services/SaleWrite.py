@@ -15,7 +15,7 @@ def def_escribir_parte_diario(List_ventas_procesadas,FILE_REGISTRO_VENTAS):
     wb = openpyxl.load_workbook(FILE_REGISTRO_VENTAS)
     for venta in List_ventas_procesadas:
         Venta_DTO=venta
-        print(f"[INFO] Registrando {Venta_DTO.Grifo} del día {Venta_DTO.Dia}")
+        print(f"[INFO] Registering fuel tap  {Venta_DTO.Grifo} of the day {Venta_DTO.Dia}")
         
         ConfigColumnWrite = def_obtener_celdas_a_escribir(Venta_DTO.Grifo)
         
@@ -68,12 +68,20 @@ def def_escribir_parte_diario(List_ventas_procesadas,FILE_REGISTRO_VENTAS):
 
             if(ConfigColumnWrite['Total_venta_acumulada']!=''):
                 if(ConfigColumnWrite['Venta_GNV']!='' and ConfigColumnWrite['Venta_GNV']!=''):
-                    sheet[Campo_VentaLiquidos] = '='+str(Venta_DTO.Total_venta_acumulada)+'-'+Campo_venta_glp+'-'+Campo_venta_gnv
-                    sheet[Campo_venta_glp] = Venta_DTO.Venta_GPL
-                    sheet[Campo_venta_gnv] = Venta_DTO.Venta_GNV
+                    if ConfigColumnWrite['Total_venta_acumulada']!='' and Venta_DTO.Total_venta_acumulada != 0.0:
+                        sheet[Campo_VentaLiquidos] = '='+str(Venta_DTO.Total_venta_acumulada)+'-'+Campo_venta_glp+'-'+Campo_venta_gnv
+                    if ConfigColumnWrite['Venta_GPL']!='' and Venta_DTO.Venta_GPL != 0.0:
+                        sheet[Campo_venta_glp] = Venta_DTO.Venta_GPL
+                    if ConfigColumnWrite['Venta_GNV']!='' and Venta_DTO.Venta_GNV != 0.0:
+                        sheet[Campo_venta_gnv] = Venta_DTO.Venta_GNV
                 else:
-                    sheet[Campo_VentaLiquidos] = '='+str(Venta_DTO.Total_venta_acumulada)+'-'+Campo_venta_glp
-                    sheet[Campo_venta_glp] = Venta_DTO.Venta_GPL
+                    if ConfigColumnWrite['Total_venta_acumulada']!='' and Venta_DTO.Total_venta_acumulada != 0.0:
+                        if(Campo_venta_glp==''):
+                            sheet[Campo_VentaLiquidos] = '='+str(Venta_DTO.Total_venta_acumulada)+'-'+Campo_venta_glp
+                        else:
+                            sheet[Campo_VentaLiquidos] = '='+str(Venta_DTO.Total_venta_acumulada)
+                    if ConfigColumnWrite['Venta_GPL']!='' and Venta_DTO.Venta_GPL != 0.0:
+                        sheet[Campo_venta_glp] = Venta_DTO.Venta_GPL
             #if(ConfigColumnWrite['Venta_GPL']!=''):
             #    sheet[Campo_venta_glp] = Venta_DTO.Venta_GPL
             #if(ConfigColumnWrite['Venta_GNV']!=''):

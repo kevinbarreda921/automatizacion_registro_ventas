@@ -4,7 +4,8 @@ from Main.Services.SaleConfig import def_obtener_celdas_a_leer_letra,def_obtener
 
 
 def def_Leer_parte_diario(Ruta_excel,Grifo,fecha_correcta,libro):
-    
+
+
     df = pd.read_excel(Ruta_excel, sheet_name=libro, header=None)
     # print("[INFO] Obteniendo Data...")
     df.columns = generar_letras_excel(len(df.columns))
@@ -134,7 +135,10 @@ def def_Leer_parte_diario(Ruta_excel,Grifo,fecha_correcta,libro):
                 
                 if str(df.iloc[Contador_credito, 0]) != "nan":
                     while True:
-                        Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", "")).strip()
+                        if(Grifo=='ACAPULCO'):
+                            Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", "")).strip()[:20]
+                        else:
+                            Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", "")).strip()
                         if Contador_credito == cliente_credito_encontrado:
                             Cliente_credito_total = float(str(df.iloc[Contador_credito, 6]).replace(",", ""))
                             Lista_clientes_credito.append(
@@ -142,6 +146,7 @@ def def_Leer_parte_diario(Ruta_excel,Grifo,fecha_correcta,libro):
                             )
                         else:
                             if Cliente_credito == "":
+                                cliente_credito_encontrado+=1
                                 break
                             encontrado = False
                             Cliente_credito_total = float(str(df.iloc[Contador_credito, 6]).replace(",", ""))
@@ -159,13 +164,19 @@ def def_Leer_parte_diario(Ruta_excel,Grifo,fecha_correcta,libro):
                         Contador_credito += 1
             
                 # Total Padel
-                Contador_credito += 1
+                if(cliente_credito_encontrado==1):
+                    Contador_credito += 2
+                else:
+                    Contador_credito += 1
                 Cliente_credito = " "
                 Cliente_credito_total = 0
             
                 if str(df.iloc[Contador_credito, 0]) != "nan":
                     while True:
-                        Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", "")).strip()
+                        if(Grifo=='ACAPULCO'):
+                            Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", "")).strip()[:20]
+                        else:
+                            Cliente_credito = str(df.iloc[Contador_credito, 0].replace("  ", "")).strip()
                         if Cliente_credito == "":
                             break
                         encontrado = False

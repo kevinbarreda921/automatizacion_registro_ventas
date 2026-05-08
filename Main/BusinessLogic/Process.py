@@ -17,6 +17,7 @@ def ejecutar_proceso_base(mes, filtro_hojas_fn=None, fecha_esperada=None):
         if not lista_grifos: return
 
         for grifo in lista_grifos:
+            print(f"[INFO] Reading fuel tap {grifo['Grifo']}")
             ruta_completa = os.path.join(GLOBAL_FILE_PARTE_DIARIO, grifo['Ruta'])
             excel_file = pd.ExcelFile(ruta_completa)
             hojas_totales = def_procesar_listado_hojas(excel_file.sheet_names, mes)

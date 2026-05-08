@@ -62,38 +62,42 @@ config_columna_creditos= {
       {'Columna':'W','Cliente':'GA INGENIEROS CONSTRUCTORES S.A.C.'}
    ],
    'ACAPULCO':[
-      {'Columna':'H','Cliente':'C & M SERVICENTROS SOCIEDAD ANONIMA CERRADA'},
-      {'Columna':'K','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC'},
-      {'Columna':'I','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC MAGNEX'},
-      {'Columna':'J','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC PROTSSA'},
-      {'Columna':'L','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC PROTSSA'},
-      {'Columna':'N','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC PROTSSA'},
-      {'Columna':'T','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC QUIMTIA'},
-      {'Columna':'U','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC PROTSSA'},
-      {'Columna':'N','Cliente':'SERVICIOS ENERGETICOS AMBIENTALES S.R.L. - SEA S.R.L.'},
-      {'Columna':'U','Cliente':'GONZALES Y DE LA CRUZ SAC - GOYDEL'},
-      {'Columna':'T','Cliente':'PETROTHOR SOCIEDAD ANONIMA CERRADA'},
-      {'Columna':'AL','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC WOW'},
-      {'Columna':'AL','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SACM INDRA'},
-      {'Columna':'AL','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SACM MAGNEX'},
-      {'Columna':'AL','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC INDRA'},
-      {'Columna':'AL','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC MAGNEX'}
+      {'Columna':'H','Cliente':'C & M SERVICENTROS S'},
+      {'Columna':'K','Cliente':'RED DE COMBUSTIBLES '},
+      {'Columna':'N','Cliente':'SERVICIOS ENERGETICO'},
+      {'Columna':'T','Cliente':'PETROTHOR SOCIEDAD A'},
+      {'Columna':'U','Cliente':'GONZALES Y DE LA CRU'}
+   ],
+   'CATACAOS':[
+      {'Columna':'N','Cliente':'C & M SERVICENTROS SOCIEDAD ANONIMA CERRADA'},
+      {'Columna':'L','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC'},
+      {'Columna':'H','Cliente':'PETRO WORLD TRANSPORTES DEL PERU SOCIEDAD ANONIMA CERRADA'}
    ],
    'TULIS':[
       {'Columna':'X','Cliente':'CORPORACION TICSANI E.I.R.L.'},
       {'Columna':'J','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC'},
-      {'Columna':'S','Cliente':'PETROTHOR SOCIEDAD ANONIMA CERRADA'}
+      {'Columna':'S','Cliente':'PETROTHOR SOCIEDAD ANONIMA CERRADA'},
+      {'Columna':'I','Cliente':'C & M SERVICENTROS SOCIEDAD ANONIMA CERRADA'},
+   ],
+   'SAN MARCOS':[
+      {'Columna':'H','Cliente':'VACIO'}
+   ],
+   'MARIA EUGENIA':[
+      {'Columna':'H','Cliente':'VACIO'}
+   ],
+   'VELITA':[
+      {'Columna':'N','Cliente':'REPRESENTACIONES VARGAS S.A.'},
+      {'Columna':'AK','Cliente':'COOPERATIVA DE AHORRO Y CRÉDITO SAN MARTÍN DE PORRES LTDA.'},
+      {'Columna':'AI','Cliente':'ACQUA BEATA S.R.L.'},
+      {'Columna':'J','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC'},
+      {'Columna':'K','Cliente':'PROGRAMA NACIONAL DE SANEAMIENTO RURAL'}, 
+      {'Columna':'T','Cliente':'PETRO WORLD TRANSPORTES DEL PERU SOCIEDAD ANONIMA CERRADA'},  
+      {'Columna':'P','Cliente':'INSTITUTO NACIONAL DE DEFENSA CIVIL'},  
+      {'Columna':'U','Cliente':'GRIFO FLOTANTE MARIA EUGENIA EIRL'},  
+      {'Columna':'Z','Cliente':'EMERAL LOGISTICS S.A.C.'} 
    ],
    'QUISTOCOCHA':[
       {'Columna':'H','Cliente':'HONDA SELVA DEL PERU S.A.'},
       {'Columna':'L','Cliente':'PETRO WORLD TRANSPORTES DEL PERU SOCIEDAD ANONIMA CERRADA'}
-   ],
-   'VELITA':[
-      {'Columna':'M','Cliente':'REPRESENTACIONES VARGAS S.A.'},
-      {'Columna':'AJ','Cliente':'COOPERATIVA DE AHORRO Y CRÉDITO SAN MARTÍN DE PORRES LTDA.'},
-      {'Columna':'AH','Cliente':'ACQUA BEATA S.R.L.'},
-      {'Columna':'I','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC'},
-      {'Columna':'J','Cliente':'PROGRAMA NACIONAL DE SANEAMIENTO RURAL'},  # está en SIGES pero no jaló aquí
-      {'Columna':'S','Cliente':'PETRO WORLD TRANSPORTES DEL PERU SOCIEDAD ANONIMA CERRADA'}  # está en SIGES pero no jaló aquí
    ]
 }
