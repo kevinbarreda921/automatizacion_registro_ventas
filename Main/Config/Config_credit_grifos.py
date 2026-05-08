@@ -32,6 +32,7 @@ config_columna_creditos= {
       {'Columna':'N','Cliente':'PETROTHOR S.A.C.'}
    ],
    'VIRU': [
+      {'Columna':'L','Cliente':'C & M SERVICENTROS SOCIEDAD ANONIMA CERRADA'},
       {'Columna':'R','Cliente':'RED DE COMBUSTIBLES LIQUIDOS SAC REDCOL SAC'},
       {'Columna':'O','Cliente':'TRANSPORTES AVALOS E HIJOS SRL'},
       {'Columna':'S','Cliente':'RED FUEL S.A.'},
