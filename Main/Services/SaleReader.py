@@ -52,7 +52,7 @@ def def_Leer_parte_diario(Ruta_excel,Grifo,fecha_correcta,libro):
 
     while True:
         contador_buscar_cuadro_hermes+=1
-        if(contador_buscar_cuadro_hermes==100):
+        if(contador_buscar_cuadro_hermes==150):
             print(f"[ \u274C ERROR] No existe cuadro Hermes")
             continue
         else:
